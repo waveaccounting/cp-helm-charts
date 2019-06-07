@@ -58,7 +58,7 @@ prometheus:
   ## JMX Exporter Configuration
   ## ref: https://github.com/prometheus/jmx_exporter
   jmx:
-    enabled: true
+    enabled: false
     image: solsson/kafka-prometheus-jmx-exporter@sha256
     imageTag: 6f82e2b0464f50da8104acd7363fb9b995001ddff77d248379f8788e78946143
     port: 5556
@@ -83,11 +83,11 @@ ksql:
 ## You can list load balanced service endpoint, or list of all brokers (which is hard in K8s).  e.g.:
 ## bootstrapServers: "PLAINTEXT://dozing-prawn-kafka-headless:9092"
 kafka:
-  bootstrapServers: ""
+  bootstrapServers: "PLAINTEXT://b-1.scylla-mercury.9b1o9w.c1.kafka.us-east-1.amazonaws.com:9092,PLAINTEXT://b-2.scylla-mercury.9b1o9w.c1.kafka.us-east-1.amazonaws.com:9092,PLAINTEXT://b-3.scylla-mercury.9b1o9w.c1.kafka.us-east-1.amazonaws.com:9092"
 
 ## e.g. gnoble-panther-cp-schema-registry:8081
 cp-schema-registry:
-  url: ""
+  url: "schema-registry-cp-schema-registry.schema-registry.svc.cluster.local:8081"
 
 # KSQL configuration options
 ## ref: https://docs.confluent.io/current/ksql/docs/installation/server-config/config-reference.html
